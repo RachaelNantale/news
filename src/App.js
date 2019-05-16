@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
 import './App.css';
+import { Route, BrowserRouter } from 'react-router-dom'
 import Home from './components/layouts/Home';
+import About from './components/layouts/About';
+import Layout from './components/layouts/Layouts';
+import NewsItemDetail from './components/presentation/NewsItemDetail';
 
 
 class App extends Component {
   render() {
-    return ( <Home/> );
+    return (
+      <BrowserRouter>
+        <Layout>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/about" component={About} />
+          <Route path="/news/:id" component={NewsItemDetail}/>
+        </Layout>
+      </BrowserRouter>
+    );
   }
 }
 
